@@ -1,7 +1,7 @@
 FROM alpine
 
-RUN apk --no-cache update && \
-  apk --no-cache add python py-pip py-setuptools ca-certificates && \
-  pip install --upgrade pip && \
-  pip --no-cache-dir install awscli --upgrade && \
-  rm -rf /var/cache/apk/*
+RUN apk add --no-cache python3 && \
+    python3 -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip3 --no-cache-dir install awscli --upgrade pip setuptools && \
+    rm -rf /var/cache/apk/*
